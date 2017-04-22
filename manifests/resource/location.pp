@@ -34,6 +34,8 @@
 #   [*proxy_hide_header*]    - Array of server headers to hide
 #   [*proxy_pass_header*]    - Array of server headers to pass
 #   [*fastcgi*]              - location of fastcgi (host:port)
+#   [*fastcgi_custom*]       - Hash with custom settings like fastcgi_hide_header
+#     or fastcgi_intercept_errors
 #   [*fastcgi_param*]        - Set additional custom fastcgi_params
 #   [*fastcgi_params*]       - optional alternative fastcgi_params file to use
 #   [*fastcgi_script*]       - optional SCRIPT_FILE parameter
@@ -173,6 +175,7 @@ define nginx::resource::location (
   Optional[String] $fastcgi                           = undef,
   Optional[String] $fastcgi_index                     = undef,
   Optional[Hash] $fastcgi_param                       = undef,
+  Optional[Hash] $fastcgi_custom                      = undef,
   String $fastcgi_params                              = "${::nginx::conf_dir}/fastcgi_params",
   Optional[String] $fastcgi_script                    = undef,
   Optional[String] $fastcgi_split_path                = undef,
